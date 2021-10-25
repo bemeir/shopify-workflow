@@ -34,7 +34,7 @@ function css() {
 
 function minifyThemeCss() {
     return gulp
-        .src('./assets/theme.css.liquid')
+        .src('./assets/custom-theme.min.css.liquid')
         .pipe(sourcemaps.init())
         .pipe(plumber())
         .pipe(csso())

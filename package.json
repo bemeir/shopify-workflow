@@ -1,9 +1,9 @@
 {
-  "name": "Change to name of project",
+  "name": "shopify/workflow",
   "version": "1.0.0",
-  "description": "Change to description of project",
+  "description": "Custom shopify workflow with Tailwin integration & sass liquid capabilities",
   "main": "index.js",
-  "repository": "Repository url",
+  "repository": "https://github.com/bemeir/shopify-workflow",
   "author": "Goran Horvat <goran@bemeir.com>",
   "license": "MIT",
   "dependencies": {

@@ -26,7 +26,7 @@
     "gulp-sourcemaps": "^3.0.0"
   },
   "scripts": {
-    "copy": "cp -R shopify-workflow/. ./ && rm -rf shopify-workflow",
+    "copy": "cp -R ./. ../ && rm -rf ./",
     "watch": "gulp watch",
     "minifyjs": "gulp minifyjs",
     "minifycss": "gulp minifycss",

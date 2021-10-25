@@ -1,5 +1,5 @@
 {
-  "name": "shopify/workflow",
+  "name": "shopify_workflow",
   "version": "1.0.0",
   "description": "Custom shopify workflow with Tailwin integration & sass liquid capabilities",
   "main": "index.js",

@@ -1,4 +1,4 @@
-#Shopify workflow
+# Shopify workflow
 
 1. Clone this repository in the root of the shopify theme ```git clone git@github.com:bemeir/shopify-workflow.git```
 2. run ```cp -R shopify-workflow/. ./```

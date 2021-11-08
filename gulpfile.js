@@ -1,7 +1,7 @@
 'use strict';
 const autoprefixer = require("autoprefixer");
 const gulp = require('gulp');
-const sass = require('gulp-sass');
+const { sass } = require("@mr-hope/gulp-sass");
 const plumber = require("gulp-plumber");
 const rename = require("gulp-rename");
 const postcss = require("gulp-postcss");
@@ -13,7 +13,6 @@ const tailwindcss = require("tailwindcss");
 const csso = require('gulp-csso');
 const uglify = require('gulp-uglify');
 
-sass.compiler = require('node-sass');
 const options = require("./config"); //paths and other options from config.js
 
 

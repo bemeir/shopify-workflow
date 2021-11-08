@@ -21,7 +21,7 @@ function css() {
         .src("./custom/custom-theme.scss")
         .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(sass({outputStyle: "compressed"}))
+        .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
         .pipe(postcss([tailwindcss(options.config.tailwindjs), autoprefixer(), cssnano()]))
         .pipe(concat('custom-theme.min.css.liquid'))
         .pipe(replace('"{{', '{{'))

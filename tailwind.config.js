@@ -1,5 +1,6 @@
 // tailwind.config.js
 module.exports = {
+    prefix: 'tw-',
     corePlugins: {
         preflight: false,
     },

@@ -8,9 +8,11 @@
   "license": "MIT",
   "dependencies": {
     "@mr-hope/gulp-sass": "^2.0.0",
+    "@tailwindcss/aspect-ratio": "^0.3.0",
+    "@tailwindcss/forms": "^0.4.0",
     "gulp-csso": "^4.0.1",
     "gulp-uglify": "^3.0.2",
-    "postcss": "^8.3.11",
+    "postcss": "^8.2.6",
     "tailwindcss": "^2.2.19"
   },
   "devDependencies": {
@@ -22,13 +24,15 @@
     "gulp-postcss": "^9.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-replace": "^1.0.0",
-    "gulp-sourcemaps": "^3.0.0"
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify-es": "^3.0.0"
   },
   "scripts": {
     "copy": "rm -rf .git && rm -rf README.md && cp -r . ../ && cd .. && npm install && rm -rf ./shopify-workflow",
     "watch": "gulp watch",
-    "minifyjs": "gulp minifyjs",
-    "minifycss": "gulp minifycss",
-    "build": "gulp compilecss"
+    "minifyTheme": "gulp minifyTheme",
+    "minifyVendor": "gulp minifyVendor",
+    "minifyCss": "gulp minifyCss",
+    "build": "gulp compileCss"
   }
 }

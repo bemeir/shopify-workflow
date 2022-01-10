@@ -11,7 +11,7 @@ const concat = require('gulp-concat');
 const replace = require('gulp-replace');
 const tailwindcss = require("tailwindcss");
 const csso = require('gulp-csso');
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify-es').default;
 
 const options = require("./config"); //paths and other options from config.js
 
@@ -21,7 +21,7 @@ function css() {
         .src("./custom/custom-theme.scss")
         .pipe(sourcemaps.init())
         .pipe(plumber())
-        .pipe(sass({outputStyle: "compressed"}).on("error", sass.logError))
+        .pipe(sass({outputStyle: "compressed"}))
         .pipe(postcss([tailwindcss(options.config.tailwindjs), autoprefixer(), cssnano()]))
         .pipe(concat('custom-theme.min.css.liquid'))
         .pipe(replace('"{{', '{{'))
@@ -33,9 +33,13 @@ function css() {
 
 function minifyThemeCss() {
     return gulp
-        .src('./assets/custom-theme.min.css.liquid')
+        .src('./assets/theme.scss.liquid')
         .pipe(sourcemaps.init())
         .pipe(plumber())
+        .pipe(sass({outputStyle: "compressed"}))
+        .pipe(rename({basename: 'theme.min'}))
+        .pipe(replace('"{{', '{{'))
+        .pipe(replace('}}"', '}}'))
         .pipe(csso())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./assets/'))
@@ -43,11 +47,33 @@ function minifyThemeCss() {
 
 function minifyThemeJs() {
     return gulp
-        .src('./assets/theme.js')
+        .src('./assets/theme.shopify-compat.js.liquid')
         .pipe(sourcemaps.init())
+        .pipe(rename({basename: 'theme.shopify-compat-min.js'}))
+        .pipe(replace('{%', '"{%'))
+        .pipe(replace('%}', '%}"'))
+        .pipe(uglify())
+        .pipe(replace('"{%', '{%'))
+        .pipe(replace('%}"', '%}'))
+        .pipe(replace('"dc', '{{'))
+        .pipe(replace('dc"', '}}'))
+        .pipe(replace('"sif', '{% if'))
+        .pipe(replace('esif"', '{% endif %}'))
+        .pipe(replace('seif', '{%'))
+        .pipe(replace('eeif', '%}'))
+        .pipe(replace('\'dsc ', '{{"'))
+        .pipe(replace('dsc\'', '}}'))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./assets/'))
+}
+
+function minifyVendorJs() {
+    return gulp
+        .src('./assets/vendor.js')
+        .pipe(sourcemaps.init())
+        .pipe(rename({basename: 'vendor.min'}))
         .pipe(uglify())
         .pipe(sourcemaps.write('.'))
-        .pipe(rename({basename: 'theme.min'}))
         .pipe(gulp.dest('./assets/'))
 }
 
@@ -56,11 +82,13 @@ function watchFiles() {
 }
 
 const watch = gulp.series(watchFiles);
-const minifyjs = gulp.series(minifyThemeJs);
-const minifycss = gulp.series(minifyThemeCss);
-const compilecss = gulp.series(css);
+const minifyTheme = gulp.series(minifyThemeJs);
+const minifyVendor = gulp.series(minifyVendorJs);
+const minifyCss = gulp.series(minifyThemeCss);
+const compileCss = gulp.series(css);
 
 exports.watch = watch;
-exports.minifyjs = minifyjs;
-exports.minifycss = minifycss;
-exports.compilecss = css;
+exports.minifyTheme = minifyTheme;
+exports.minifyVendor = minifyVendor;
+exports.minifyCss = minifyCss;
+exports.compileCss = compileCss;

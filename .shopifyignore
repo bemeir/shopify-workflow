@@ -1,0 +1,9 @@
+config.js
+package.json
+package-lock.json
+tailwind.config.js
+node_modules/*
+postcss.config.js
+webpack.config.js
+cypress.config.js
+cypress/

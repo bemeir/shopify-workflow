@@ -1,38 +1,51 @@
 {
-  "name": "shopify_workflow",
+  "name": "bemeir-shopify-webpack-theme-development",
   "version": "1.0.0",
-  "description": "Custom shopify workflow with Tailwin integration & sass liquid capabilities",
-  "main": "index.js",
-  "repository": "https://github.com/bemeir/shopify-workflow",
-  "author": "Goran Horvat <goran@bemeir.com>",
-  "license": "MIT",
-  "dependencies": {
-    "@mr-hope/gulp-sass": "^2.0.0",
-    "@tailwindcss/aspect-ratio": "^0.3.0",
-    "@tailwindcss/forms": "^0.4.0",
-    "gulp-csso": "^4.0.1",
-    "gulp-uglify": "^3.0.2",
-    "postcss": "^8.2.6",
-    "tailwindcss": "^2.2.19"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.0.2",
-    "cssnano": "^4.1.10",
-    "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
-    "gulp-plumber": "^1.2.1",
-    "gulp-postcss": "^9.0.0",
-    "gulp-rename": "^2.0.0",
-    "gulp-replace": "^1.0.0",
-    "gulp-sourcemaps": "^3.0.0",
-    "gulp-uglify-es": "^3.0.0"
-  },
+  "description": "Empty starting point for modern Shopify theme development",
+  "main": "webpack.config.js",
   "scripts": {
-    "copy": "rm -rf .git && rm -rf README.md && cp -r . ../ && cd .. && npm install && rm -rf ./shopify-workflow",
-    "watch": "gulp watch",
-    "minifyTheme": "gulp minifyTheme",
-    "minifyVendor": "gulp minifyVendor",
-    "minifyCss": "gulp minifyCss",
-    "build": "gulp compileCss"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development webpack --watch",
+    "build": "webpack",
+    "cypress:open": "cypress open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bemeir/anatomie-rebuild.git"
+  },
+  "author": "Goran Horvat",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bemeir/anatomie-rebuild/issues"
+  },
+  "homepage": "https://github.com/bemeir/anatomie-rebuild#readme",
+  "devDependencies": {
+    "@cypress-audit/lighthouse": "^1.3.1",
+    "@cypress-audit/pa11y": "^1.3.1",
+    "@shopify/theme-cart": "^4.1.1",
+    "@shopify/theme-product": "^4.1.1",
+    "@shopify/theme-product-form": "^4.1.1",
+    "@testing-library/cypress": "^8.0.3",
+    "autoprefixer": "^10.4.7",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.7.1",
+    "cypress": "^10.3.1",
+    "eslint-plugin-compat": "^4.0.2",
+    "fast-glob": "^3.2.11",
+    "mini-css-extract-plugin": "^2.6.1",
+    "node-sass": "^7.0.1",
+    "postcss": "^8.4.14",
+    "postcss-import": "^14.1.0",
+    "postcss-loader": "^7.0.1",
+    "pre-commit": "^1.2.2",
+    "sass-loader": "^13.0.2",
+    "style-loader": "^3.3.1",
+    "tailwindcss": "^3.1.6",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-shell-plugin-next": "^2.2.2"
+  },
+  "pre-commit": [
+    "build"
+  ]
 }

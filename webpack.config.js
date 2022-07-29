@@ -65,13 +65,14 @@ module.exports = {
                     to: 'layout/[name][ext]'
                 },
                 {
-                    from: 'src/locales/*.json',
-                    to: 'templates/customers/[name][ext]'
-                },
-                {
                     from: 'src/liquid/snippets/**/*.liquid',
                     to: 'snippets/[name][ext]'
-                }]
+                },
+                {
+                    from: 'src/liquid/sections/**/*.liquid',
+                    to: 'sections/[name][ext]'
+                }
+            ]
 
         })
     ],

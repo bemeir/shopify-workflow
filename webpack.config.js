@@ -33,9 +33,9 @@ module.exports = {
                 test: /\.[s]?css$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    { loader: 'css-loader', options: { importLoaders: 2 } },
+                    { loader: 'css-loader', options: { importLoaders: 2, url: false } },
                     { loader: 'postcss-loader' },
-                    { loader: 'sass-loader' },
+                    { loader: 'sass-loader' }
                 ]
             }
         ]
@@ -51,26 +51,37 @@ module.exports = {
                 {
                     from: 'src/liquid/templates/customers/*.liquid',
                     to: 'templates/customers/[name][ext]',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/liquid/templates/*.json',
-                    to: 'templates/[name][ext]'
+                    to: 'templates/[name][ext]',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/liquid/templates/*.liquid',
-                    to: 'templates/[name][ext]'
+                    to: 'templates/[name][ext]',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/liquid/layout/*.liquid',
-                    to: 'layout/[name][ext]'
+                    to: 'layout/[name][ext]',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/liquid/snippets/**/*.liquid',
-                    to: 'snippets/[name][ext]'
+                    to: 'snippets/[name][ext]',
+                    noErrorOnMissing: true
                 },
                 {
                     from: 'src/liquid/sections/**/*.liquid',
-                    to: 'sections/[name][ext]'
+                    to: 'sections/[name][ext]',
+                    noErrorOnMissing: true
+                },
+                {
+                    from: 'src/assets/**/*',
+                    to: 'assets/[name][ext]',
+                    noErrorOnMissing: true
                 }
             ]
 
